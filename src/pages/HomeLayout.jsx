@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import { Header } from "../components"
+import { Header, Navbar } from "../components"
 
 
 
@@ -8,6 +8,7 @@ const HomeLayout = () => {
     <>
       
       <Header/>
+      <Navbar/>
       <section className="aline-element py-20">
          <Outlet />
       </section>

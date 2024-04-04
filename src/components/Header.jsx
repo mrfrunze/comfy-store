@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-
 const Header = () => {
   return (
     <header className='bg-neutral py-2 text-neutral-content'>
