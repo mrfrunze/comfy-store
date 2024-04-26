@@ -18,7 +18,7 @@ const SingleProduct = () => {
   const [amount, setAmount] = useState(1)
 
   const handleAmount = e=> {
-    setAmount(e.target.value)
+    setAmount(parseInt(e.target.value))
   }
 
   const cartProduct = {
@@ -104,7 +104,7 @@ const SingleProduct = () => {
               value={amount}
               onChange={handleAmount}
             >
-             {generateAmountOptions(2)}
+             {generateAmountOptions(10)}
             </select>
           </div>
           {/* Cart btn */}
