@@ -25,6 +25,10 @@ const CartItem = ({cartItem}) => {
         <h4 className='mt-2 capitalize text-sm text-neutral-content'>{company}</h4>
         {/* color */}
         <p className="mt-4 text-sm capitalize flex items-center gap-x-2">
+          color :
+          <span className="badge badge-sm" style={{backgroundColor: productColor}}></span>
+        </p>
+      </div>
       <div className="sm:ml-12">
         {/* AMOUNT */}
         <div className="form-control max-w-xs">
