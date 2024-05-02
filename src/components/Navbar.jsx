@@ -2,32 +2,19 @@ import { NavLink } from "react-router-dom"
 import { FaBarsStaggered } from 'react-icons/fa6';
 import {BsCart3, BsMoonFill, BsSunFill} from 'react-icons/bs';
 import { NavLinks } from "../components"
-import { useEffect, useState } from "react";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleTheme } from "../features/user/userSlice";
 
 
-const themes = {
-  winter: "winter",
-  night: "night",
-}
-
-const getThemeLocalStorage = () => {
-  return localStorage.getItem("theme") || themes.winter;
-}
 
 
 const Navbar = () => {
-  const [theme, setTheme] = useState(getThemeLocalStorage())
+  const dispatch = useDispatch()
+  
   const handleTheme = () => {
-    const {winter, night} = themes;
-    const newTheme = theme === winter ? night : winter;
-    setTheme(newTheme)
+    dispatch(toggleTheme())
+    
   }
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme)
-    localStorage.setItem("theme", theme)
-  }, [theme])
 
   const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
 
