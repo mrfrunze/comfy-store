@@ -19,8 +19,8 @@ const Navbar = () => {
   const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
 
   return (
-    <nav className="bg-base-200">
-      <div className="navbar align-element">
+    <nav className="bg-base-200 ">
+      <div className="navbar aline-element">
         <div className="navbar-start">
           {/* Title */}
           <NavLink to="/" className='hidden lg:flex btn btn-primary text-3xl items-center'>
