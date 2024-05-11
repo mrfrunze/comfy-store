@@ -5,9 +5,8 @@ import { customFetch, formatPrice } from '../utils';
 import { toast } from 'react-toastify';
 import { clearCart } from '../features/cart/cartSlice';
 
-export const action = (store) => async () => {
+export const action = (store) => async ({request}) => {
   // console.log(store);
-  async ({request}) => {
     const formData = await request.formData();
     const { name, address } = Object.fromEntries(formData);
     const user = store.getState().userState.user;
@@ -31,14 +30,14 @@ export const action = (store) => async () => {
       toast.success('order placed successfully');
       return redirect('/orders');
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       const errorMessage = error?.response?.data?.error?.message || 'there was an error placing your order';
       toast.error(errorMessage);
-      if(error.response.status === 401) return redirect("/login")
+      if(error.response.status === 401 || 403) return redirect("/login")
       return null; 
     }
-  }
 }
+
 
 const CheckoutForm = () => {
   return (
