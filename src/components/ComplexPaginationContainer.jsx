@@ -40,20 +40,24 @@ const ComplexPaginationContainer = () => {
         pageButtons.push(addPageButton({pageNumber: 1, activeClass: page === 1 }))
 
         // dots 
-        pageButtons.push(<button className="join-item btn btn-xs sm:btn-sm" key="dots-1">
-            ...
-        </button>)
-
+        if(page > 2) {
+            pageButtons.push(<button className="btn btn-xs sm:btn-md join-item" key="dots-1">
+                ...
+            </button>)
+        }
+       
         // active/current page 
         if (page !== 1 && page !== pageCount) {
             pageButtons.push(addPageButton({pageNumber: page, activeClass: true }))
         }
 
         // dots 
-        pageButtons.push(<button className="join-item btn btn-xs sm:btn-sm" key="dots-2">
-            ...
-        </button>)
-       
+        if(page < pageCount - 1) {
+            pageButtons.push(<button className="btn btn-xs sm:btn-md join-item" key="dots-2">
+                ...
+            </button>)
+        }
+        
         // last button
         pageButtons.push(addPageButton({pageNumber: pageCount, activeClass: page === pageCount }))
         return pageButtons
