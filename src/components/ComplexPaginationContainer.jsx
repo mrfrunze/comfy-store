@@ -2,13 +2,15 @@ import { useLoaderData, useLocation, useNavigate } from "react-router-dom"
 
 const ComplexPaginationContainer = () => {
     const { meta } = useLoaderData()
-    console.log(meta);
-    const { pageCount, page } = meta.pagination;
+    // console.log(meta);
+    // if i wont custom pageCount
+    const customPageCount = 22;
+    const { page } = meta.pagination;
+
+    // if import pageCount from  useLoaderData
+    // const { pageCount, page } = meta.pagination;
+    // console.log(pageCount);
     
-  
-    // const pages = Array.from({ length: pageCount }, (_, index) => {
-    //   return index + 1;
-    // });
 
     // console.log(pages);
     const { search, pathname } = useLocation();
@@ -47,23 +49,23 @@ const ComplexPaginationContainer = () => {
         }
        
         // active/current page 
-        if (page !== 1 && page !== pageCount) {
+        if (page !== 1 && page !== customPageCount) {
             pageButtons.push(addPageButton({pageNumber: page, activeClass: true }))
         }
 
         // dots 
-        if(page < pageCount - 1) {
+        if(page < customPageCount - 1) {
             pageButtons.push(<button className="btn btn-xs sm:btn-md join-item" key="dots-2">
                 ...
             </button>)
         }
         
         // last button
-        pageButtons.push(addPageButton({pageNumber: pageCount, activeClass: page === pageCount }))
+        pageButtons.push(addPageButton({pageNumber: customPageCount, activeClass: page === customPageCount }))
         return pageButtons
     }
   
-    if(pageCount < 2) return null
+    if(customPageCount < 2) return null
   
     return (
       <div className="mt-16 flex justify-end">
@@ -72,7 +74,7 @@ const ComplexPaginationContainer = () => {
           className='btn btn-xs sm:btn-md join-item'
             onClick={() => {
               let prevPage = page - 1;
-              if (prevPage < 1) prevPage = pageCount;
+              if (prevPage < 1) prevPage = customPageCount;
               handlePageChange(prevPage);
             }}
            >
@@ -83,7 +85,7 @@ const ComplexPaginationContainer = () => {
             className='btn btn-xs sm:btn-md join-item'
             onClick={() => {
               let nextPage = page + 1;
-              if (nextPage > pageCount) nextPage = 1;
+              if (nextPage > customPageCount) nextPage = 1;
               handlePageChange(nextPage);}}
             >
             Next
